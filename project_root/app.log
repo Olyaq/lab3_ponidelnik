@@ -1,0 +1,16 @@
+2026-03-27 14:12:09,907 [ERROR] /Users/olgakalasnikova/PycharmProjects/lab3_ponidelnik/project_root/data/report1.csv: Duplicate transaction id: 1
+2026-03-27 14:12:09,907 [ERROR] /Users/olgakalasnikova/PycharmProjects/lab3_ponidelnik/project_root/data/report1.csv: Amount must be > 0
+2026-03-27 14:16:30,895 [ERROR] report1.csv [row 1]: Duplicate transaction id: 1
+2026-03-27 14:16:30,895 [ERROR] report1.csv [row 2]: Amount must be > 0
+2026-03-27 14:28:11,304 [ERROR] report1.csv [row 1]: Duplicate transaction id: 1
+2026-03-27 14:28:11,304 [ERROR] report1.csv [row 2]: Amount must be > 0
+2026-03-27 14:29:09,091 [ERROR] report1.csv [row 1]: Duplicate transaction id: 1
+2026-03-27 14:29:09,091 [ERROR] report1.csv [row 2]: Amount must be > 0
+2026-03-30 08:44:15,794 [ERROR] report1.csv [row 1]: Duplicate transaction id: 1
+2026-03-30 08:44:15,795 [ERROR] report1.csv [row 2]: Amount must be > 0
+2026-03-30 09:00:21,744 [ERROR] report1.csv [row 1]: Duplicate transaction id: 1
+2026-03-30 09:00:21,744 [ERROR] report1.csv [row 2]: Amount must be > 0
+2026-03-30 09:25:16,349 [ERROR] report1.csv [row 1]: Duplicate transaction id: 1
+2026-03-30 09:25:16,349 [ERROR] report1.csv [row 2]: Amount must be > 0
+2026-03-30 09:57:34,701 [ERROR] report1.csv [row 1]: Duplicate transaction id: 1
+2026-03-30 09:57:34,701 [ERROR] report1.csv [row 2]: Amount must be > 0

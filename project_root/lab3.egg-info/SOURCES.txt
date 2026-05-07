@@ -1,0 +1,16 @@
+setup.py
+app/__init__.py
+app/core/__init__.py
+app/core/exceptions.py
+app/core/models.py
+app/io/__init__.py
+app/io/base_reader.py
+app/io/csv_reader.py
+app/io/json_reader.py
+app/services/__init__.py
+app/services/aggregator.py
+app/services/validator.py
+lab3.egg-info/PKG-INFO
+lab3.egg-info/SOURCES.txt
+lab3.egg-info/dependency_links.txt
+lab3.egg-info/top_level.txt
