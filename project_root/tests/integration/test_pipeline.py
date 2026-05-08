@@ -39,9 +39,9 @@ def run_pipeline(data_dir: Path) -> dict:
     return aggregator.summarize()
 
 
-# ---------------------------------------------------------------------------
+
 # Основной пайплайн
-# ---------------------------------------------------------------------------
+
 
 class TestPipeline:
 
@@ -114,9 +114,9 @@ class TestPipeline:
         assert loaded == {"travel": 250.0}
 
 
-# ---------------------------------------------------------------------------
+
 # Mocking: диск защищён от записи
-# ---------------------------------------------------------------------------
+
 
 class TestMocking:
 
@@ -150,3 +150,10 @@ class TestMocking:
         with patch("pathlib.Path.open", side_effect=IOError("disk failure")):
             with pytest.raises(DataFormatError):
                 reader.read(tmp_path / "data.csv")
+
+    def test_csv_reader_ioerror_raises_data_format_error(self, tmp_path):
+        from app.core.exceptions import DataFormatError
+        reader = CSVReader()
+        with patch("pathlib.Path.open", side_effect=IOError("disk failure")):
+            with pytest.raises(DataFormatError):
+                list(reader.read(tmp_path / "data.csv"))  # ← добавили list()

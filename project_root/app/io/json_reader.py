@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from typing import List, Dict, Any
+from typing import Generator, Dict, Any
 
 from app.io.base_reader import BaseReader
 from app.core.exceptions import DataFormatError
@@ -8,7 +8,7 @@ from app.core.exceptions import DataFormatError
 
 class JSONReader(BaseReader):
 
-    def read(self, path: Path) -> List[Dict[str, Any]]:
+    def read(self, path: Path) -> Generator[Dict[str, Any], None, None]:
         try:
             with path.open("r", encoding="utf-8") as f:
                 data = json.load(f)
@@ -16,7 +16,10 @@ class JSONReader(BaseReader):
             if not isinstance(data, list):
                 raise DataFormatError("JSON must contain a list")
 
-            return data
+            for item in data:
+                yield item          # отдаём один элемент за раз
 
+        except DataFormatError:
+            raise
         except Exception as err:
             raise DataFormatError(f"JSON error in {path}: {err}") from err

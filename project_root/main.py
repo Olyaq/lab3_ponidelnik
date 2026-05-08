@@ -1,6 +1,7 @@
 from pathlib import Path
 import json
 import logging
+import tracemalloc
 
 from app.io.csv_reader import CSVReader
 from app.io.json_reader import JSONReader
@@ -21,6 +22,8 @@ READERS = {
 
 
 def main():
+    tracemalloc.start()
+
     base_dir = Path(__file__).resolve().parent
     data_dir = base_dir / "data"
 
@@ -85,6 +88,9 @@ def main():
 
     tmp_path.replace(final_path)
 
+    current, peak = tracemalloc.get_traced_memory()
+    tracemalloc.stop()
+
     print(f"\nProcessed: {total}")
     print(f"Success: {success}")
     print(f"Errors: {len(errors)}")
@@ -95,6 +101,7 @@ def main():
             print("-", err)
 
     print("Result saved to result.json")
+    print(f"Peak Memory Usage: {peak / 1024 / 1024:.2f} MB")
 
 
 if __name__ == "__main__":

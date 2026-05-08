@@ -10,9 +10,9 @@ def make_tx(id="1", amount=100.0, category="food"):
     return Transaction(id=id, amount=amount, category=category, date=datetime(2024, 1, 1))
 
 
-# ---------------------------------------------------------------------------
+
 # Базовое добавление
-# ---------------------------------------------------------------------------
+
 
 def test_add_single_transaction(aggregator):
     """Добавление одной транзакции — summarize возвращает её сумму."""
@@ -38,9 +38,9 @@ def test_same_category_sums_up(aggregator):
     assert result["food"] == 300.0
 
 
-# ---------------------------------------------------------------------------
+
 # Дубликаты
-# ---------------------------------------------------------------------------
+
 
 def test_duplicate_id_raises(aggregator):
     """Два раза один id — ValidationError."""
@@ -56,9 +56,9 @@ def test_different_ids_no_error(aggregator):
     assert len(aggregator.transactions) == 2
 
 
-# ---------------------------------------------------------------------------
+
 # Пустой агрегатор
-# ---------------------------------------------------------------------------
+
 
 def test_summarize_empty(aggregator):
     """Без транзакций summarize возвращает пустой словарь."""

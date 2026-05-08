@@ -4,9 +4,9 @@ from app.core.exceptions import ValidationError
 from app.core.models import Transaction
 
 
-# ---------------------------------------------------------------------------
+
 # Позитивный сценарий
-# ---------------------------------------------------------------------------
+
 
 def test_validate_returns_transaction(valid_record):
     """Корректная запись возвращает объект Transaction."""
@@ -23,9 +23,9 @@ def test_validate_correct_values(valid_record):
     assert tx.date.year == 2024
 
 
-# ---------------------------------------------------------------------------
+
 # Граничные значения amount
-# ---------------------------------------------------------------------------
+
 
 @pytest.mark.parametrize("amount, should_pass", [
     ("0.01",      True),   # минимально допустимое
@@ -51,9 +51,9 @@ def test_amount_boundaries(valid_record, amount, should_pass):
             validate_record(valid_record)
 
 
-# ---------------------------------------------------------------------------
+
 # Отсутствующие обязательные поля
-# ---------------------------------------------------------------------------
+
 
 @pytest.mark.parametrize("missing_field", ["id", "amount", "category", "date"])
 def test_missing_required_field(valid_record, missing_field):
@@ -63,9 +63,9 @@ def test_missing_required_field(valid_record, missing_field):
         validate_record(valid_record)
 
 
-# ---------------------------------------------------------------------------
+
 # Некорректная дата
-# ---------------------------------------------------------------------------
+
 
 @pytest.mark.parametrize("bad_date", [
     "not-a-date",
@@ -88,9 +88,9 @@ def test_valid_iso_date_formats(valid_record):
     assert tx.date.hour == 12
 
 
-# ---------------------------------------------------------------------------
+
 # Мусор на входе
-# ---------------------------------------------------------------------------
+
 
 def test_validate_raises_on_none():
     """None вместо словаря — должна быть ошибка, не AttributeError."""
